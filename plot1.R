@@ -9,13 +9,8 @@ if (!file.exists("exdata_data_household_power_consumption.zip")) {
 
 # R Code for Plot 1
 
-library(data.table)
-data <- fread("household_power_consumption.txt", sep = ";", header = TRUE, na.strings = "?")
+data <- read.table("household_power_consumption.txt", sep = ";", header = TRUE, na.strings = "?")
 data <- subset(data, Date %in% c("1/2/2007","2/2/2007"))
-
-data$Date <- as.Date(data$Date)
-data$Time <- strptime(data$Time)
-str(data)
 
 #Creating Plot 1
 png("plot1.png", width = 480, height = 480)
